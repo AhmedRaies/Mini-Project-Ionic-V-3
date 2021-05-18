@@ -1,1 +1,18 @@
+
+<ion-footer >
+    <ion-toolbar color="">
+        <ion-buttons>
+            <button ion-button icon-only (click)=goToHome()>
+                <ion-icon name="home"></ion-icon>
+                Home
+            </button>
+        </ion-buttons>
+        <ion-buttons end>
+            <button *ngIf="isLoggedIn()" ion-button icon-only (click)=goToProfile()>
+                <ion-icon name="person"></ion-icon>
+                Mon Compte
+            </button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-footer>
 <ion-nav [root]="rootPage"></ion-nav>

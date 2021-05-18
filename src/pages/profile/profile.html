@@ -1,3 +1,9 @@
+<!--
+  Generated template for the ProfilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
 <ion-header>
   <ion-navbar>
     <ion-buttons end>
@@ -5,22 +11,28 @@
         <ion-icon name="settings"></ion-icon>
       </button>
     </ion-buttons>
-    <ion-title>
-      <ion-searchbar [showCancelButton]="true" (ionInput)="getItems($event)"></ion-searchbar>
-    </ion-title>
+    <ion-title>profile</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content >
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-avatar item-start>
+        <ion-icon name="person"></ion-icon>
+      </ion-avatar>
+      <h2> {{ getName() }} </h2>
+      <p>{{ getMail() }}</p>
+    </ion-item>
+  </ion-list>
   <ion-card *ngFor="let item of data">
 
     <ion-item>
       <h2>{{ item.nom }} {{ item.prenom }}</h2>
-      <p>Email : {{ item.email }}</p>
     </ion-item>
 
       <ion-card-header>
-        <h1>{{ item.titre }}</h1>
+        <h2>{{ item.id }}\# {{ item.titre }}</h2>
       </ion-card-header>
    
     <ion-card-content>
@@ -37,13 +49,13 @@
           <div>{{ item.prix }} DT</div>
         </button>
       </ion-col>
-      <ion-col *ngIf="forUser(item.email)">
-        <button  (click)="toupdate(item.id,item.type,item.titre,item.description,item.prix)" ion-button icon-start clear small>
+      <ion-col>
+        <button (click)="toupdate(item.id,item.type,item.titre,item.description,item.prix)" ion-button icon-start clear small>
           <ion-icon name="refresh"></ion-icon>
           <div>Update</div>
         </button>
       </ion-col>
-      <ion-buttons *ngIf="forUser(item.email)" end>
+      <ion-buttons end>
         <button (click)="delete(item.id)" ion-button icon-only end clear small>
           <ion-icon name="trash"></ion-icon>
           
@@ -52,5 +64,9 @@
     </ion-row>
 
   </ion-card>
+
+
+  <ion-fab bottom right edge style="margin-bottom: 21%;">
+    <button ion-fab mini (click)=presentModal()><ion-icon name="add"></ion-icon></button>
+    </ion-fab>
 </ion-content>
-<br><br><br><br>
